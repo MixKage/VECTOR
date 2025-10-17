@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_Слой_2" data-name="Слой 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460.28 91.49">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4d4d4f;
+      }
+
+      .cls-1, .cls-2, .cls-3 {
+        stroke-width: 0px;
+      }
+
+      .cls-4 {
+        font-family: Montserrat-ExtraBold, Montserrat;
+        font-size: 81.83px;
+        font-weight: 700;
+      }
+
+      .cls-4, .cls-2 {
+        fill: #d00e46;
+      }
+
+      .cls-5 {
+        fill: #e6e6e6;
+        stroke: #e6e6e6;
+        stroke-miterlimit: 10;
+        stroke-width: 10px;
+      }
+
+      .cls-6 {
+        letter-spacing: -.03em;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+
+      .cls-3 {
+        fill: #c49a6c;
+      }
+    </style>
+  </defs>
+  <g id="Back">
+    <g>
+      <g>
+        <line class="cls-5" x1="442.46" y1="23.54" x2="399.91" y2="39.3"/>
+        <line class="cls-5" x1="398.66" y1="39.84" x2="416.72" y2="75.06"/>
+        <circle class="cls-1" cx="416.72" cy="75.06" r="10.71"/>
+        <circle class="cls-3" cx="398.66" cy="39.84" r="13.69"/>
+        <circle class="cls-2" cx="442.46" cy="23.54" r="17.82"/>
+      </g>
+      <text class="cls-4" transform="translate(0 69.56)"><tspan x="0" y="0">ВЕ</tspan><tspan class="cls-6" x="116.12" y="0">К</tspan><tspan class="cls-7" x="175.03" y="0">Т</tspan><tspan x="227.82" y="0">ОР</tspan></text>
+    </g>
+  </g>
+</svg>
