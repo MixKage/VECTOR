@@ -66,8 +66,6 @@ export function clearToken() {
 }
 
 export const ROLE_OPTIONS = [
-  { code: 0, label: "Без роли" },
-  { code: 1, label: "Администратор" },
   { code: 2, label: "HR" },
   { code: 3, label: "Университет" },
   { code: 4, label: "Студент" },
@@ -76,3 +74,5 @@ export const ROLE_OPTIONS = [
 export function roleLabel(code) {
   return ROLE_OPTIONS.find((item) => item.code === code)?.label || `Роль ${code}`;
 }
+
+

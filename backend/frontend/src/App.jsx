@@ -7,7 +7,7 @@ export default function App() {
     <BrowserRouter>
       <div className="layout">
         <header className="topbar">
-          <div className="brand">Auth Portal</div>
+          <div className="brand">Вектор</div>
           <nav className="nav">
             <NavLink to="/login" className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")}>
               Авторизация
