@@ -1,0 +1,35 @@
+Кэши и окружения Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Локальные файлы окружения
+.env
+
+
+# Pytest/coverage
+.pytest_cache/
+.coverage
+coverage.xml
+
+# Папки редактора
+.idea/
+.vscode/
+
+# Артефакты сборки фронтенда
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Выходные данные сборки
+dist/
+build/
+
+# Удаление лишних данных, не имеющих отношение к проду и кейсу
+swagger/
+desktop.ini
+Parser.py
