@@ -12,7 +12,9 @@ export const Input:FC<IInput> = (props) => {
         label,
         type,
         value,
-        onChange
+        onChange,
+        size="md",
+        labelPlacement="inside"
     } = props
 
     return (
@@ -26,6 +28,8 @@ export const Input:FC<IInput> = (props) => {
             color="danger"
             variant='bordered'
             onChange={onChange}
+            size={size}
+            labelPlacement={labelPlacement}
         />
     )
 }

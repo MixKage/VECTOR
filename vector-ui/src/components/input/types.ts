@@ -8,4 +8,6 @@ export interface IInput {
     type?: string;
     value: string;
     onChange: ChangeEventHandler;
+    size?: "md" | "sm" | "lg" | undefined;
+    labelPlacement?: "inside" | "outside" | "outside-left" | "outside-top";
 }
