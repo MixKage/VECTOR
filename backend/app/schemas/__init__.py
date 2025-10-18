@@ -1,18 +1,29 @@
 """Экспорт Pydantic-схем."""
 
+from app.schemas.stats import CompanyStat, SpecializationStat, StatsResponse
+from app.schemas.university import (
+    UniversityCreate,
+    UniversityRead,
+    UniversityRecent,
+    UniversityRecentResponse,
+)
 from app.schemas.vacancy import (
     VacancyCandidateRead,
     VacancyListItem,
     VacancyListResponse,
     VacancyRefreshResponse,
 )
-from app.schemas.university import UniversityCreate, UniversityRead
 
 __all__ = (
+    "StatsResponse",
+    "SpecializationStat",
+    "CompanyStat",
+    "UniversityCreate",
+    "UniversityRead",
+    "UniversityRecent",
+    "UniversityRecentResponse",
     "VacancyCandidateRead",
     "VacancyListItem",
     "VacancyListResponse",
     "VacancyRefreshResponse",
-    "UniversityCreate",
-    "UniversityRead",
 )

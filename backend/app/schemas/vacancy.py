@@ -1,4 +1,4 @@
-"""Pydantic-схемы, описывающие структуры данных для API вакансий."""
+"""Pydantic-схемы для работы с вакансиями."""
 
 from datetime import datetime
 from typing import List
@@ -7,7 +7,7 @@ from pydantic import BaseModel
 
 
 class VacancyCandidateRead(BaseModel):
-    """Статус кандидата в рамках вакансии."""
+    """Информация о кандидате, откликнувшемся на вакансию."""
 
     candidate_id: int
     is_new: bool
@@ -18,7 +18,7 @@ class VacancyCandidateRead(BaseModel):
 
 
 class VacancyListItem(BaseModel):
-    """Данные вакансии, возвращаемые в списке."""
+    """Короткое представление вакансии для списков."""
 
     id: int
     name: str
@@ -33,7 +33,7 @@ class VacancyListItem(BaseModel):
 
 
 class VacancyListResponse(BaseModel):
-    """Обёртка ответа при выдаче списка вакансий."""
+    """Ответ при запросе списка вакансий."""
 
     vacancies: List[VacancyListItem]
 
@@ -43,5 +43,7 @@ class VacancyRefreshResponse(BaseModel):
 
     vacancy_id: int
     company: str
+    refresh_count: int
     old_expiry_date: datetime
     new_expiry_date: datetime
+

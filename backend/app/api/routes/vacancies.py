@@ -11,7 +11,12 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
-from app.core.redis import delete_by_pattern, get_cache, set_cache
+from app.core.redis import (
+    delete_by_pattern,
+    get_cache,
+    increment_counter,
+    set_cache,
+)
 from app.db.session import get_db
 from app.models import Vacancy
 from app.schemas import VacancyListResponse, VacancyRefreshResponse
@@ -20,6 +25,7 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 VACANCY_CACHE_PREFIX = "vacancies:list"
+VACANCY_REFRESH_COUNTER = "vacancy:refresh"
 
 
 @router.get("/", response_model=VacancyListResponse)
@@ -27,11 +33,11 @@ async def list_vacancies(
     company: str | None = Query(
         None,
         alias="filter",
-        description="Фильтр по названию компании",
+        description="Необязательный фильтр по названию компании",
     ),
     db: AsyncSession = Depends(get_db),
 ) -> VacancyListResponse:
-    """Вернуть вакансии с опциональным фильтром по названию компании."""
+    """Получить список вакансий с опциональным фильтром по компании."""
     cache_key = f"{VACANCY_CACHE_PREFIX}:{company or 'all'}"
 
     try:
@@ -69,7 +75,7 @@ async def refresh_vacancy_expiry(
     id: int,
     db: AsyncSession = Depends(get_db),
 ) -> VacancyRefreshResponse:
-    """Продлить срок действия вакансии на один календарный месяц."""
+    """Продлить срок действия вакансии на месяц и зафиксировать событие в Redis."""
     stmt = (
         select(Vacancy)
         .where(Vacancy.id == id)
@@ -95,9 +101,17 @@ async def refresh_vacancy_expiry(
     except Exception as exc:  # noqa: BLE001
         logger.warning("Не удалось очистить кэш списка вакансий: %s", exc)
 
+    refresh_count = 0
+    try:
+        refresh_count = await increment_counter(f"{VACANCY_REFRESH_COUNTER}:{id}")
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Не удалось обновить счётчик продлений вакансии %s: %s", id, exc)
+
     return VacancyRefreshResponse(
         vacancy_id=vacancy.id,
         company=vacancy.company,
+        refresh_count=refresh_count,
         old_expiry_date=old_expiry,
         new_expiry_date=vacancy.expiry_date,
     )
+

@@ -1,12 +1,13 @@
-"""Pydantic-схемы для работы с данными университетов."""
+"""Pydantic-схемы для данных от университетов."""
 
 from datetime import datetime
+from typing import List
 
 from pydantic import BaseModel, Field
 
 
 class UniversityCreate(BaseModel):
-    """Данные о наборе студентов на стажировку от университета."""
+    """Пакет данных, который присылает университет."""
 
     university_name: str = Field(..., description="Название университета")
     direction_of_study_code: str = Field(
@@ -15,15 +16,32 @@ class UniversityCreate(BaseModel):
     )
     start_date: datetime = Field(..., description="Дата начала стажировки")
     end_time: datetime = Field(..., description="Дата окончания стажировки")
-    count: int = Field(..., gt=0, description="Общее количество мест")
+    count: int = Field(..., gt=0, description="Количество мест")
 
 
 class UniversityRead(UniversityCreate):
-    """Ответ после сохранения информации об университете."""
+    """Ответ после регистрации данных университета."""
 
     id: int
     reserved: int
 
     class Config:
         orm_mode = True
+
+
+class UniversityRecent(BaseModel):
+    """Схема для чтения последних заявок университетов из Redis."""
+
+    university_name: str
+    direction_of_study_code: str
+    start_date: datetime
+    end_time: datetime
+    count: int
+    submitted_at: datetime
+
+
+class UniversityRecentResponse(BaseModel):
+    """Ответ со списком последних заявок от университетов."""
+
+    items: List[UniversityRecent]
 
