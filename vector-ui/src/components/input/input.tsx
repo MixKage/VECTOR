@@ -11,7 +11,8 @@ export const Input:FC<IInput> = (props) => {
         defaultValue = "",
         label,
         type,
-        value
+        value,
+        onChange
     } = props
 
     return (
@@ -24,6 +25,7 @@ export const Input:FC<IInput> = (props) => {
             value={value}
             color="danger"
             variant='bordered'
+            onChange={onChange}
         />
     )
 }
