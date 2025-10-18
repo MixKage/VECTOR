@@ -3,7 +3,8 @@
     padding-left: 30px;
     padding-right: 30px;
     background-color: var(--background-color);
-    height: 100vh;
+    height: min-content;
+    min-height: 100vh;
 }
 
 .main {
