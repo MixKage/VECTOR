@@ -11,15 +11,6 @@ x-api-base: &api-base
     - "8000"
 
 services:
-  frontend:
-    build: ./frontend
-    working_dir: /app
-    environment:
-      - VITE_API_BASE=/api
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-
   api1:
     <<: *api-base
 
@@ -31,7 +22,6 @@ services:
     depends_on:
       - api1
       - api2
-      - frontend
     ports:
       - "8080:80"
     volumes:
