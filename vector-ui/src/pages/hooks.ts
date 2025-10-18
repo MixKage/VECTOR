@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react"
+import { ICardData } from "@/components/vacancy-card/types";
 
 export const useIndexPage = () => {
     const navigate = useNavigate();
@@ -24,5 +26,18 @@ export const useIndexPage = () => {
         handleClickHr,
         handleClickCandidate,
         handleClickUniversity,
+    }
+}
+
+export const useHr = () => {
+    
+    const [list, setList] = useState<Array<ICardData>>([])
+
+    useEffect(() => {
+
+    }, [])
+    
+    return {
+        list,
     }
 }

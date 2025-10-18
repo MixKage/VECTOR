@@ -23,6 +23,7 @@ export function VacancyCard({
   status,
 }: VacancyCardProps) {
   const getStatusBadge = () => {
+
     if (status === "archived") {
       return (
         <Badge
