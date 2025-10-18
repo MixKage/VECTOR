@@ -6,7 +6,23 @@ export const siteConfig = {
     {
       label: "Home",
       href: "/",
-    }
+    },
+    {
+      label: "university",
+      href: "/university",
+    },
+    {
+      label: "moderator",
+      href: "/moderator",
+    },
+    {
+      label: "hr",
+      href: "/hr",
+    },
+    {
+      label: "candidate",
+      href: "/candidate",
+    },
   ],
   navMenuItems: [
     {

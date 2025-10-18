@@ -1,21 +1,40 @@
-import BackgroundSvg from '../../images/background.svg';
 import LogoSvg from '../images/logo.svg';
-import { Button } from "@heroui/button";
-import DefaultLayout from "@/layouts/default";
+import { Button } from "../components/button";
+import { DefaultLayout } from "@/layouts/default";
+import "./styles.css";
+import { useIndexPage } from './hooks';
 
 export default function IndexPage() {
+
+  const {
+    handleClickModerator,
+    handleClickHr,
+    handleClickCandidate,
+    handleClickUniversity,
+  } = useIndexPage()
+
   return (
     <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+      <section>
         <img 
           src={LogoSvg} 
           alt="Логотип компании" 
-          className="w-32 h-auto"
+          className="logo-svg"
         />
-        <Button>Модератор ОЭЗ</Button>
-        <Button>Представитель HR</Button>
-        <Button>Университет</Button>
-        <Button>Соискатель</Button>
+      </section>
+      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
+        <Button
+          onClick={handleClickModerator}
+        >Модератор ОЭЗ</Button>
+        <Button
+          onClick={handleClickHr}
+        >Представитель HR</Button>
+        <Button
+          onClick={handleClickUniversity}
+        >Университет</Button>
+        <Button
+          onClick={handleClickCandidate}
+        >Соискатель</Button>
       </section>
     </DefaultLayout>
   );

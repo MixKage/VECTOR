@@ -1,14 +1,21 @@
-export default function DefaultLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import { FC } from "react";
+import "./styles.css"
+import { IDefaultLayout } from "./types";
+
+export const DefaultLayout:FC<IDefaultLayout> = ({ className = "", children}) => {
   return (
-    <div className="relative flex flex-col h-screen">
-      <main className="container mx-auto max-w-7xl px-6 flex-grow pt-16">
-        {children}
+    <div className={`min-h-screen flex flex-col layout ${className}`}>
+      <main className="flex-1">
+        <div className="container mx-auto p-4">
+          <div className="content">
+            {children}
+          </div>
+        </div>
       </main>
-      <footer className="w-full flex items-center justify-center py-3">
+      <footer className="mt-auto">
+        <div className="mb-[30px] mr-8 text-right">
+          <p>© 2025 ВЕКТОР. Все права защищены. </p>
+        </div>
       </footer>
     </div>
   );

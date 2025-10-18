@@ -1,3 +1,11 @@
 @import "tailwindcss";
 
-@config "../../tailwind.config.js"
+@config "../../tailwind.config.js";
+
+:root {
+  /* Основные цвета */
+  --primary-color: #D00E46;
+  --background-color: #CECECE;
+  --secondary-color: #4E4E50;
+  --background-color-second: #393649;
+}

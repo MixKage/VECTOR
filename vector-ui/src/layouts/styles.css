@@ -1,0 +1,15 @@
+.layout {
+    padding-top: 46px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: var(--background-color);
+    height: 100vh;
+}
+
+.main {
+    height: auto;
+}
+
+.footer {
+    color: var(--secondary-color);
+}
