@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react"
 import { ICardData } from "@/components/vacancy-card/types";
 import { prepareDataForCards } from "@/components/vacancy-card/utils";
+import axios from "axios";
 
 export const useIndexPage = () => {
     const navigate = useNavigate();
@@ -55,11 +56,15 @@ export const useHr = () => {
     }, [searchQuery, statusFilter])
 
     useEffect(() => {
-        const prepareData = prepareDataForCards([{ id: 1, name: "fefef", creation_date: "2025-12-12", expiry_date: "2025-12-13", daysLeft: 2,
-    specialization: "efwfwefefefwe",
-    candidates: [{id: 1, is_new: true}], company: "fwefwef"}])
-        setList(prepareData)
-        setFilteredList(prepareData)
+
+        axios.get("http://localhost:8000/vacancies/")
+            .then(
+                (response: any) => {
+                    const prepareData = prepareDataForCards(response.data)
+                    setList(prepareData)
+                    setFilteredList(prepareData)
+                })
+            .catch((error: any) => console.error(error));
     }, [])
 
     const onChangeSearchQuery = (e: any) => {
