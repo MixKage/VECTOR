@@ -14,6 +14,7 @@ interface VacancyCardProps {
 }
 
 export function VacancyCard({
+  id,
   title,
   company,
   postedDate,
@@ -22,6 +23,11 @@ export function VacancyCard({
   hasNewApplicants,
   status,
 }: VacancyCardProps) {
+
+  const refresh = () => {
+    //send id
+  }
+
   const getStatusBadge = () => {
 
     if (status === "archived") {
@@ -148,41 +154,12 @@ export function VacancyCard({
                 e.currentTarget.style.backgroundColor = "transparent";
                 e.currentTarget.style.color = "#D00E46";
               }}
+              onClick={refresh}
             >
               Продлить
             </Button>
           )}
-          <Button
-            variant="outline"
-            className={`transition-all hover:text-white ${daysLeft >= 7 || status === "archived" ? "flex-1" : "flex-1"}`}
-            style={{
-              borderColor: "#4E4E50",
-              color: "#4E4E50",
-            }}
-            onMouseEnter={(e: any) => {
-              e.currentTarget.style.backgroundColor = "#4E4E50";
-              e.currentTarget.style.color = "white";
-            }}
-            onMouseLeave={(e: any) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = "#4E4E50";
-            }}
-          >
-            Скрыть
-          </Button>
         </div>
-        <button
-          className="text-center transition-colors"
-          style={{ color: "#393649" }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.color = "#D00E46";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.color = "#393649";
-          }}
-        >
-          Управление
-        </button>
       </div>
     </div>
   );

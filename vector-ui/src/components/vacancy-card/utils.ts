@@ -14,7 +14,7 @@ export const prepareDataForCards = (data: any): Array<ICardData> => {
             name: value.name,
             creationDate: new Date(value.creation_date),
             expiryDate: new Date(value.expiry_date),
-            daysLeft: getDifferenceInDays(new Date(value.expiry_date), new Date(value.creation_date)),
+            daysLeft: getDifferenceInDays(new Date(value.creation_date), new Date(value.expiry_date)),
             specialization: value.specialization,
             candidatedCount: value.candidates.length,
             hasNew: value.candidates.some((x: any) => x.is_new),
