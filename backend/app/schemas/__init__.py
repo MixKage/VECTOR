@@ -6,10 +6,13 @@ from app.schemas.vacancy import (
     VacancyListResponse,
     VacancyRefreshResponse,
 )
+from app.schemas.university import UniversityCreate, UniversityRead
 
 __all__ = (
     "VacancyCandidateRead",
     "VacancyListItem",
     "VacancyListResponse",
     "VacancyRefreshResponse",
+    "UniversityCreate",
+    "UniversityRead",
 )
