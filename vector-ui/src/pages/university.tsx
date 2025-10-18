@@ -2,7 +2,8 @@ import { DefaultLayout } from "@/layouts/default";
 import LogoSvg from '../images/logo.svg';
 import "./styles.css";
 import { Input } from "@/components/input/input";
-import {useState} from "react";
+import {Children, useState} from "react";
+import { Button } from "@/components/button";
 
 export default function UniversityPage() {
 
@@ -52,6 +53,10 @@ export default function UniversityPage() {
           label="Дата конца прохождения практики"
           value={dateEnd}
           onChange={e => setDateEnd((e.target as HTMLInputElement).value)}
+        />
+        <Button
+          onClick={() => {return}}
+          children="Отправить"
         />
       </section>
     </DefaultLayout>
