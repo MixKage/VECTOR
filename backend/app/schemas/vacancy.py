@@ -42,5 +42,6 @@ class VacancyRefreshResponse(BaseModel):
     """Ответ после продления срока действия вакансии."""
 
     vacancy_id: int
+    company: str
     old_expiry_date: datetime
     new_expiry_date: datetime

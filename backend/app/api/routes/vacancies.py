@@ -97,6 +97,7 @@ async def refresh_vacancy_expiry(
 
     return VacancyRefreshResponse(
         vacancy_id=vacancy.id,
+        company=vacancy.company,
         old_expiry_date=old_expiry,
         new_expiry_date=vacancy.expiry_date,
     )
