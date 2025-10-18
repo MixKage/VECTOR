@@ -1,6 +1,7 @@
 import { Calendar, Clock, User } from "lucide-react";
 import { Button } from "./atoms";
 import { Badge } from "./atoms";
+import axios from "axios";
 
 interface VacancyCardProps {
   id: string;
@@ -25,7 +26,8 @@ export function VacancyCard({
 }: VacancyCardProps) {
 
   const refresh = () => {
-    //send id
+    axios.post(`http://localhost:8000/vacancies/${id}/refresh`);
+    window.location.reload();
   }
 
   const getStatusBadge = () => {
@@ -76,13 +78,6 @@ export function VacancyCard({
       style={{ boxShadow: "0px 2px 8px rgba(0, 0, 0, 0.08)" }}
     >
       <div className="flex items-start justify-between mb-4">
-        {/* <div className="w-12 h-12 rounded-lg overflow-hidden bg-gray-100 flex-shrink-0">
-          <ImageWithFallback
-            src={logoUrl}
-            alt={company}
-            className="w-full h-full object-cover"
-          />
-        </div> */}
         {getStatusBadge()}
       </div>
 
@@ -101,18 +96,21 @@ export function VacancyCard({
       <div className="space-y-2 mb-4">
         <div className="flex items-center gap-2" style={{ color: "#4E4E50" }}>
           <Calendar className="w-4 h-4" />
-          <span>Размещена: {postedDate}</span>
+          <span>Размещена: {(new Date(postedDate)).toLocaleDateString("ru-RU", {day: "2-digit", month: "long", year: "numeric"})}</span>
         </div>
-        <div
-          className="flex items-center gap-2"
-          style={{
-            color: getDaysLeftColor(),
-            fontWeight: daysLeft < 7 ? 600 : 400,
-          }}
-        >
-          <Clock className="w-4 h-4" />
-          <span>{getDaysLeftText()}</span>
-        </div>
+        {
+          (status !== "archived") &&
+          <div
+            className="flex items-center gap-2"
+            style={{
+              color: getDaysLeftColor(),
+              fontWeight: daysLeft < 7 ? 600 : 400,
+            }}
+          >
+            <Clock className="w-4 h-4" />
+            <span>{getDaysLeftText()}</span>
+          </div>
+        }
       </div>
 
       <div

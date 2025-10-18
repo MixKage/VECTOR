@@ -56,11 +56,10 @@ export const useHr = () => {
     }, [searchQuery, statusFilter])
 
     useEffect(() => {
-
         axios.get("http://localhost:8000/vacancies/")
             .then(
                 (response: any) => {
-                    const prepareData = prepareDataForCards(response.data)
+                    const prepareData = prepareDataForCards(response.data.vacancies)
                     setList(prepareData)
                     setFilteredList(prepareData)
                 })
