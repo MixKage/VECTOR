@@ -35,6 +35,19 @@ services:
     volumes:
       - .:/app
 
+  frontend:
+    build:
+      context: ../vector-ui
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://api:8000
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_started
+    ports:
+      - "3000:80"
+
   pgadmin:
     image: dpage/pgadmin4
     restart: unless-stopped

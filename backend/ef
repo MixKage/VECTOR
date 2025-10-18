@@ -1,0 +1,3 @@
+INSERT INTO public.vacancy(
+	id, name, company, field_file, platform, specialization, type_work, grafic, place_work, map_link, "time", price, additionally, text, site_link, video_link, personal_data, emails_data, sms, creation_date, expiry_date, is_approved)
+	VALUES ('Стажёр Frontend разработчик', 'InfoSoft', 'frontend_tasks.pdf', 'HeadHunter', 'IT', 'Стажировка', 'Гибкий график', 'Екатеринбург', 'https://maps.example.com/webvision', 20, '38000 RUB', 'Опыт с React и менторство от старших разработчиков', 'Ищем стажёра для участия в разработке интерфейсов на React.', 'https://webvision.example.com/jobs/frontend-intern', 'https://video.example.com/frontend-intern', True, True, True, '2025-10-12', '2025-10-24', True);
