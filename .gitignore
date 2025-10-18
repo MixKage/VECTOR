@@ -33,3 +33,4 @@ build/
 swagger/
 desktop.ini
 Parser.py
+init3.sql
